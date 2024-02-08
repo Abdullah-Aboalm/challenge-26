@@ -9,8 +9,7 @@ myBtn.addEventListener("click", () => {
   if (myFiled.value.length == 0) {
     myErr.style.cssText = "display: block;";
     myCont.classList.add("error");
-  } else if (/^\w+@\w+\.\w+{2,10}$/.test(myFiled.value)) {
-    // Text.indexOf("@") === -1 || Text.indexOf(".") === -1 || Text[Text.indexOf('.') + 1] === undefined || Text[Text.indexOf('.') - 1] === "@" || Text[Text.indexOf('@') - 1] === undefined
+  } else if (/^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+\.[a-zA-z]{2,3}$/.test(myFiled.value)) {
     // when enter a valid email address
     myErr.style.cssText = "display: block; color: #78C1F3";
     myCont.classList.remove("error");

@@ -9,12 +9,8 @@ myBtn.addEventListener("click", () => {
   if (myFiled.value.length == 0) {
     myErr.style.cssText = "display: block;";
     myCont.classList.add("error");
-  } else if (Text.indexOf("@") === -1 || Text.indexOf(".") === -1 || Text[Text.indexOf('.') + 1] === undefined || Text[Text.indexOf('.') - 1] === "@" || Text[Text.indexOf('@') - 1] === undefined) {
-    // when enter wrong email address
-    myErr.style.cssText = "display: block;";
-    myCont.classList.add("error");
-    myErr.textContent = "Please enter a valid email address !";
-  } else {
+  } else if (/^\w+@\w+\.\w+{2,10}$/.test(myFiled.value)) {
+    // Text.indexOf("@") === -1 || Text.indexOf(".") === -1 || Text[Text.indexOf('.') + 1] === undefined || Text[Text.indexOf('.') - 1] === "@" || Text[Text.indexOf('@') - 1] === undefined
     // when enter a valid email address
     myErr.style.cssText = "display: block; color: #78C1F3";
     myCont.classList.remove("error");
@@ -22,6 +18,11 @@ myBtn.addEventListener("click", () => {
     setTimeout(() => {
       location.reload();
     }, 1000);
+  } else {
+    // when enter wrong email address
+    myErr.style.cssText = "display: block;";
+    myCont.classList.add("error");
+    myErr.textContent = "Please enter a valid email address !";
   }
   // when input filed remove error message
   myFiled.addEventListener("input", () => {
